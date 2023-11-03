@@ -1,11 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "servicios",
+  "collectionName": "industrias",
   "info": {
-    "singularName": "servicio",
-    "pluralName": "servicios",
-    "displayName": "servicio",
-    "description": ""
+    "singularName": "industria",
+    "pluralName": "industrias",
+    "displayName": "Industria"
   },
   "options": {
     "draftAndPublish": true
@@ -16,8 +15,9 @@
       "type": "string",
       "required": true
     },
-    "descripcion": {
-      "type": "text"
+    "slug": {
+      "type": "uid",
+      "targetField": "titulo"
     },
     "contenido": {
       "type": "customField",
@@ -25,12 +25,7 @@
         "output": "HTML",
         "preset": "rich"
       },
-      "required": true,
       "customField": "plugin::ckeditor.CKEditor"
-    },
-    "slug": {
-      "type": "uid",
-      "targetField": "titulo"
     }
   }
 }

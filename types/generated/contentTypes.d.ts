@@ -677,6 +677,45 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiIndustriaIndustria extends Schema.CollectionType {
+  collectionName: 'industrias';
+  info: {
+    singularName: 'industria';
+    pluralName: 'industrias';
+    displayName: 'Industria';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    titulo: Attribute.String & Attribute.Required;
+    slug: Attribute.UID<'api::industria.industria', 'titulo'>;
+    contenido: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor.CKEditor',
+        {
+          output: 'HTML';
+          preset: 'rich';
+        }
+      >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::industria.industria',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::industria.industria',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiNavigationNavigation extends Schema.SingleType {
   collectionName: 'navigations';
   info: {
@@ -760,6 +799,7 @@ export interface ApiProyectoProyecto extends Schema.CollectionType {
     singularName: 'proyecto';
     pluralName: 'proyectos';
     displayName: 'proyecto';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -831,12 +871,6 @@ export interface ApiProyectoProyecto extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    descripcion: Attribute.RichText &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     cover: Attribute.Media &
       Attribute.Required &
       Attribute.SetPluginOptions<{
@@ -845,6 +879,25 @@ export interface ApiProyectoProyecto extends Schema.CollectionType {
         };
       }>;
     galeria: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    descripcion: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor.CKEditor',
+        {
+          output: 'HTML';
+          preset: 'rich';
+        }
+      > &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    slug: Attribute.UID<'api::proyecto.proyecto', 'titulo'> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -880,6 +933,7 @@ export interface ApiServicioServicio extends Schema.CollectionType {
     singularName: 'servicio';
     pluralName: 'servicios';
     displayName: 'servicio';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -896,6 +950,7 @@ export interface ApiServicioServicio extends Schema.CollectionType {
           preset: 'rich';
         }
       >;
+    slug: Attribute.UID<'api::servicio.servicio', 'titulo'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -930,6 +985,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::industria.industria': ApiIndustriaIndustria;
       'api::navigation.navigation': ApiNavigationNavigation;
       'api::newsfeed.newsfeed': ApiNewsfeedNewsfeed;
       'api::proyecto.proyecto': ApiProyectoProyecto;

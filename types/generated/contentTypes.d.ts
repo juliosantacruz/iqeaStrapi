@@ -874,6 +874,46 @@ export interface ApiProyectoProyecto extends Schema.CollectionType {
   };
 }
 
+export interface ApiServicioServicio extends Schema.CollectionType {
+  collectionName: 'servicios';
+  info: {
+    singularName: 'servicio';
+    pluralName: 'servicios';
+    displayName: 'servicio';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    titulo: Attribute.String & Attribute.Required;
+    descripcion: Attribute.Text;
+    contenido: Attribute.RichText &
+      Attribute.Required &
+      Attribute.CustomField<
+        'plugin::ckeditor.CKEditor',
+        {
+          output: 'HTML';
+          preset: 'rich';
+        }
+      >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::servicio.servicio',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::servicio.servicio',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -893,6 +933,7 @@ declare module '@strapi/types' {
       'api::navigation.navigation': ApiNavigationNavigation;
       'api::newsfeed.newsfeed': ApiNewsfeedNewsfeed;
       'api::proyecto.proyecto': ApiProyectoProyecto;
+      'api::servicio.servicio': ApiServicioServicio;
     }
   }
 }

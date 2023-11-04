@@ -1,0 +1,46 @@
+{
+  "kind": "collectionType",
+  "collectionName": "procesos",
+  "info": {
+    "singularName": "proceso",
+    "pluralName": "procesos",
+    "displayName": "proceso",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "titulo": {
+      "type": "string",
+      "required": true
+    },
+    "descripcion": {
+      "type": "customField",
+      "options": {
+        "output": "HTML",
+        "preset": "rich"
+      },
+      "customField": "plugin::ckeditor.CKEditor"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "titulo"
+    },
+    "contenido": {
+      "type": "customField",
+      "options": {
+        "output": "HTML",
+        "preset": "rich"
+      },
+      "customField": "plugin::ckeditor.CKEditor"
+    },
+    "tipo_proceso": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::tipo-proceso.tipo-proceso",
+      "inversedBy": "procesos"
+    }
+  }
+}

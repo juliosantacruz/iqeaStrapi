@@ -677,6 +677,43 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiCategoriaProductoCategoriaProducto
+  extends Schema.CollectionType {
+  collectionName: 'categoria_productos';
+  info: {
+    singularName: 'categoria-producto';
+    pluralName: 'categoria-productos';
+    displayName: 'categoria_producto';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    slug: Attribute.UID<'api::categoria-producto.categoria-producto', 'title'>;
+    productos: Attribute.Relation<
+      'api::categoria-producto.categoria-producto',
+      'oneToMany',
+      'api::producto.producto'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::categoria-producto.categoria-producto',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::categoria-producto.categoria-producto',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiIndustriaIndustria extends Schema.CollectionType {
   collectionName: 'industrias';
   info: {
@@ -839,6 +876,58 @@ export interface ApiProcesoProceso extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::proceso.proceso',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiProductoProducto extends Schema.CollectionType {
+  collectionName: 'productos';
+  info: {
+    singularName: 'producto';
+    pluralName: 'productos';
+    displayName: 'producto';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    titulo: Attribute.String;
+    slug: Attribute.UID<'api::producto.producto', 'titulo'>;
+    descripcion: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor.CKEditor',
+        {
+          output: 'HTML';
+          preset: 'rich';
+        }
+      >;
+    contenido: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor.CKEditor',
+        {
+          output: 'HTML';
+          preset: 'rich';
+        }
+      >;
+    categoria_producto: Attribute.Relation<
+      'api::producto.producto',
+      'manyToOne',
+      'api::categoria-producto.categoria-producto'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::producto.producto',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::producto.producto',
       'oneToOne',
       'admin::user'
     > &
@@ -1022,6 +1111,57 @@ export interface ApiServicioServicio extends Schema.CollectionType {
   };
 }
 
+export interface ApiSistemaTratamientoSistemaTratamiento
+  extends Schema.CollectionType {
+  collectionName: 'sistemas_tratamientos';
+  info: {
+    singularName: 'sistema-tratamiento';
+    pluralName: 'sistemas-tratamientos';
+    displayName: 'Sistema_Tratamiento';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    titulo: Attribute.String;
+    slug: Attribute.UID<
+      'api::sistema-tratamiento.sistema-tratamiento',
+      'titulo'
+    >;
+    descripcion: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor.CKEditor',
+        {
+          output: 'HTML';
+          preset: 'rich';
+        }
+      >;
+    contenido: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor.CKEditor',
+        {
+          output: 'HTML';
+          preset: 'rich';
+        }
+      >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::sistema-tratamiento.sistema-tratamiento',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::sistema-tratamiento.sistema-tratamiento',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiTipoProcesoTipoProceso extends Schema.CollectionType {
   collectionName: 'tipo_procesos';
   info: {
@@ -1123,12 +1263,15 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::categoria-producto.categoria-producto': ApiCategoriaProductoCategoriaProducto;
       'api::industria.industria': ApiIndustriaIndustria;
       'api::navigation.navigation': ApiNavigationNavigation;
       'api::newsfeed.newsfeed': ApiNewsfeedNewsfeed;
       'api::proceso.proceso': ApiProcesoProceso;
+      'api::producto.producto': ApiProductoProducto;
       'api::proyecto.proyecto': ApiProyectoProyecto;
       'api::servicio.servicio': ApiServicioServicio;
+      'api::sistema-tratamiento.sistema-tratamiento': ApiSistemaTratamientoSistemaTratamiento;
       'api::tipo-proceso.tipo-proceso': ApiTipoProcesoTipoProceso;
     }
   }

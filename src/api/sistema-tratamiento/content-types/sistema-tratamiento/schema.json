@@ -1,0 +1,38 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sistemas_tratamientos",
+  "info": {
+    "singularName": "sistema-tratamiento",
+    "pluralName": "sistemas-tratamientos",
+    "displayName": "Sistema_Tratamiento"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "titulo": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "titulo"
+    },
+    "descripcion": {
+      "type": "customField",
+      "options": {
+        "output": "HTML",
+        "preset": "rich"
+      },
+      "customField": "plugin::ckeditor.CKEditor"
+    },
+    "contenido": {
+      "type": "customField",
+      "options": {
+        "output": "HTML",
+        "preset": "rich"
+      },
+      "customField": "plugin::ckeditor.CKEditor"
+    }
+  }
+}

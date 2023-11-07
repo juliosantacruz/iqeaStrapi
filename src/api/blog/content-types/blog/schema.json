@@ -1,24 +1,22 @@
 {
   "kind": "collectionType",
-  "collectionName": "productos",
+  "collectionName": "blogs",
   "info": {
-    "singularName": "producto",
-    "pluralName": "productos",
-    "displayName": "producto",
-    "description": ""
+    "singularName": "blog",
+    "pluralName": "blogs",
+    "displayName": "blog"
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "titulo": {
-      "type": "string",
-      "required": false
+    "Title": {
+      "type": "string"
     },
     "slug": {
       "type": "uid",
-      "targetField": "titulo"
+      "targetField": "Title"
     },
     "descripcion": {
       "type": "customField",
@@ -28,19 +26,13 @@
       },
       "customField": "plugin::ckeditor.CKEditor"
     },
-    "contenido": {
+    "content": {
       "type": "customField",
       "options": {
         "output": "HTML",
         "preset": "rich"
       },
       "customField": "plugin::ckeditor.CKEditor"
-    },
-    "categoria_producto": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::categoria-producto.categoria-producto",
-      "inversedBy": "productos"
     },
     "cover": {
       "allowedTypes": [

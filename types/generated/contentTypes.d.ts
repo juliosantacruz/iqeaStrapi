@@ -677,6 +677,46 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiBlogBlog extends Schema.CollectionType {
+  collectionName: 'blogs';
+  info: {
+    singularName: 'blog';
+    pluralName: 'blogs';
+    displayName: 'blog';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Title: Attribute.String;
+    slug: Attribute.UID<'api::blog.blog', 'Title'>;
+    descripcion: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor.CKEditor',
+        {
+          output: 'HTML';
+          preset: 'rich';
+        }
+      >;
+    content: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor.CKEditor',
+        {
+          output: 'HTML';
+          preset: 'rich';
+        }
+      >;
+    cover: Attribute.Media;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::blog.blog', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::blog.blog', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 export interface ApiCategoriaProductoCategoriaProducto
   extends Schema.CollectionType {
   collectionName: 'categoria_productos';
@@ -889,6 +929,7 @@ export interface ApiProductoProducto extends Schema.CollectionType {
     singularName: 'producto';
     pluralName: 'productos';
     displayName: 'producto';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -917,6 +958,7 @@ export interface ApiProductoProducto extends Schema.CollectionType {
       'manyToOne',
       'api::categoria-producto.categoria-producto'
     >;
+    cover: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1093,6 +1135,7 @@ export interface ApiServicioServicio extends Schema.CollectionType {
         }
       >;
     slug: Attribute.UID<'api::servicio.servicio', 'titulo'>;
+    cover: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1263,6 +1306,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::blog.blog': ApiBlogBlog;
       'api::categoria-producto.categoria-producto': ApiCategoriaProductoCategoriaProducto;
       'api::industria.industria': ApiIndustriaIndustria;
       'api::navigation.navigation': ApiNavigationNavigation;

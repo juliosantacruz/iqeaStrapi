@@ -683,13 +683,14 @@ export interface ApiBlogBlog extends Schema.CollectionType {
     singularName: 'blog';
     pluralName: 'blogs';
     displayName: 'blog';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    Title: Attribute.String;
-    slug: Attribute.UID<'api::blog.blog', 'Title'>;
+    Title: Attribute.String & Attribute.Unique;
+    slug: Attribute.UID<'api::blog.blog', 'Title'> & Attribute.Required;
     descripcion: Attribute.RichText &
       Attribute.CustomField<
         'plugin::ckeditor.CKEditor',
@@ -724,12 +725,13 @@ export interface ApiCategoriaProductoCategoriaProducto
     singularName: 'categoria-producto';
     pluralName: 'categoria-productos';
     displayName: 'categoria_producto';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    title: Attribute.String & Attribute.Required;
+    title: Attribute.String & Attribute.Required & Attribute.Unique;
     slug: Attribute.UID<'api::categoria-producto.categoria-producto', 'title'>;
     productos: Attribute.Relation<
       'api::categoria-producto.categoria-producto',
@@ -760,12 +762,13 @@ export interface ApiIndustriaIndustria extends Schema.CollectionType {
     singularName: 'industria';
     pluralName: 'industrias';
     displayName: 'Industria';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    titulo: Attribute.String & Attribute.Required;
+    titulo: Attribute.String & Attribute.Required & Attribute.Unique;
     slug: Attribute.UID<'api::industria.industria', 'titulo'>;
     contenido: Attribute.RichText &
       Attribute.CustomField<
@@ -882,7 +885,7 @@ export interface ApiProcesoProceso extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    titulo: Attribute.String & Attribute.Required;
+    titulo: Attribute.String & Attribute.Required & Attribute.Unique;
     descripcion: Attribute.RichText &
       Attribute.CustomField<
         'plugin::ckeditor.CKEditor',
@@ -935,7 +938,7 @@ export interface ApiProductoProducto extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    titulo: Attribute.String;
+    titulo: Attribute.String & Attribute.Required & Attribute.Unique;
     slug: Attribute.UID<'api::producto.producto', 'titulo'>;
     descripcion: Attribute.RichText &
       Attribute.CustomField<
@@ -996,6 +999,7 @@ export interface ApiProyectoProyecto extends Schema.CollectionType {
   attributes: {
     titulo: Attribute.String &
       Attribute.Required &
+      Attribute.Unique &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;

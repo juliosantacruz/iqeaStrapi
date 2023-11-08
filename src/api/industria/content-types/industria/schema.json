@@ -4,7 +4,8 @@
   "info": {
     "singularName": "industria",
     "pluralName": "industrias",
-    "displayName": "Industria"
+    "displayName": "Industria",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -13,7 +14,8 @@
   "attributes": {
     "titulo": {
       "type": "string",
-      "required": true
+      "required": true,
+      "unique": true
     },
     "slug": {
       "type": "uid",

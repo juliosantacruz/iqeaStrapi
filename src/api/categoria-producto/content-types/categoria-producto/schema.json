@@ -4,7 +4,8 @@
   "info": {
     "singularName": "categoria-producto",
     "pluralName": "categoria-productos",
-    "displayName": "categoria_producto"
+    "displayName": "categoria_producto",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -13,7 +14,8 @@
   "attributes": {
     "title": {
       "type": "string",
-      "required": true
+      "required": true,
+      "unique": true
     },
     "slug": {
       "type": "uid",

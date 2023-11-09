@@ -908,6 +908,7 @@ export interface ApiProcesoProceso extends Schema.CollectionType {
       'manyToOne',
       'api::tipo-proceso.tipo-proceso'
     >;
+    cover: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

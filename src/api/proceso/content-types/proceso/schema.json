@@ -42,6 +42,13 @@
       "relation": "manyToOne",
       "target": "api::tipo-proceso.tipo-proceso",
       "inversedBy": "procesos"
+    },
+    "cover": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }

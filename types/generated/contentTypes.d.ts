@@ -756,6 +756,38 @@ export interface ApiCategoriaProductoCategoriaProducto
   };
 }
 
+export interface ApiFormularioFormulario extends Schema.CollectionType {
+  collectionName: 'formularios';
+  info: {
+    singularName: 'formulario';
+    pluralName: 'formularios';
+    displayName: 'formulario';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    nombre: Attribute.String;
+    formulario: Attribute.JSON;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::formulario.formulario',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::formulario.formulario',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiIndustriaIndustria extends Schema.CollectionType {
   collectionName: 'industrias';
   info: {
@@ -1313,6 +1345,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::blog.blog': ApiBlogBlog;
       'api::categoria-producto.categoria-producto': ApiCategoriaProductoCategoriaProducto;
+      'api::formulario.formulario': ApiFormularioFormulario;
       'api::industria.industria': ApiIndustriaIndustria;
       'api::navigation.navigation': ApiNavigationNavigation;
       'api::newsfeed.newsfeed': ApiNewsfeedNewsfeed;

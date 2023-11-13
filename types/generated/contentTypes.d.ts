@@ -756,31 +756,67 @@ export interface ApiCategoriaProductoCategoriaProducto
   };
 }
 
-export interface ApiFormularioFormulario extends Schema.CollectionType {
-  collectionName: 'formularios';
+export interface ApiFormulariosContactoFormulariosContacto
+  extends Schema.CollectionType {
+  collectionName: 'formularios_contactos';
   info: {
-    singularName: 'formulario';
-    pluralName: 'formularios';
-    displayName: 'formulario';
-    description: '';
+    singularName: 'formularios-contacto';
+    pluralName: 'formularios-contactos';
+    displayName: 'formulariosContacto';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    nombre: Attribute.String;
-    formulario: Attribute.JSON;
+    titulo: Attribute.String;
+    slug: Attribute.UID<
+      'api::formularios-contacto.formularios-contacto',
+      'titulo'
+    >;
+    formularioJson: Attribute.JSON;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::formulario.formulario',
+      'api::formularios-contacto.formularios-contacto',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::formulario.formulario',
+      'api::formularios-contacto.formularios-contacto',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiFormulariosRecibidoFormulariosRecibido
+  extends Schema.CollectionType {
+  collectionName: 'formularios_recibidos';
+  info: {
+    singularName: 'formularios-recibido';
+    pluralName: 'formularios-recibidos';
+    displayName: 'Formularios Recibido';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    data: Attribute.JSON;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::formularios-recibido.formularios-recibido',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::formularios-recibido.formularios-recibido',
       'oneToOne',
       'admin::user'
     > &
@@ -1345,7 +1381,8 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::blog.blog': ApiBlogBlog;
       'api::categoria-producto.categoria-producto': ApiCategoriaProductoCategoriaProducto;
-      'api::formulario.formulario': ApiFormularioFormulario;
+      'api::formularios-contacto.formularios-contacto': ApiFormulariosContactoFormulariosContacto;
+      'api::formularios-recibido.formularios-recibido': ApiFormulariosRecibidoFormulariosRecibido;
       'api::industria.industria': ApiIndustriaIndustria;
       'api::navigation.navigation': ApiNavigationNavigation;
       'api::newsfeed.newsfeed': ApiNewsfeedNewsfeed;

@@ -26,6 +26,14 @@
       "relation": "oneToMany",
       "target": "api::producto.producto",
       "mappedBy": "categoria_producto"
+    },
+    "descripcion": {
+      "type": "customField",
+      "options": {
+        "output": "HTML",
+        "preset": "standard"
+      },
+      "customField": "plugin::ckeditor.CKEditor"
     }
   }
 }

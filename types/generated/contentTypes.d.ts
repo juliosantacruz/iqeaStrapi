@@ -738,6 +738,14 @@ export interface ApiCategoriaProductoCategoriaProducto
       'oneToMany',
       'api::producto.producto'
     >;
+    descripcion: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor.CKEditor',
+        {
+          output: 'HTML';
+          preset: 'standard';
+        }
+      >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

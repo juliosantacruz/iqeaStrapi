@@ -2,7 +2,7 @@ module.exports={
   routes:[
     {
       method:'GET',
-      path:'/categoria/:slug',
+      path:'/categoria-producto/:slug',
       handler: 'categoria-producto.findOne',
       config:{
         auth:false,

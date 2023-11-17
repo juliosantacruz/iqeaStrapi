@@ -10,7 +10,7 @@ export default factories.createCoreController('api::categoria-producto.categoria
 
     const entity = await strapi.db.query('api::categoria-producto.categoria-producto').findOne({
       where:{slug:id},
-      populate:['productos']
+      populate:['productos','productos.cover']
     });
     const sanatizedEntity = await this.sanitizeOutput(entity, ctx)
     return this.transformResponse(sanatizedEntity)

@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "categoria_productos",
+  "info": {
+    "singularName": "categoria-producto",
+    "pluralName": "categoria-productos",
+    "displayName": "categoria_producto",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title"
+    },
+    "productos": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::producto.producto",
+      "mappedBy": "categoria_producto"
+    },
+    "descripcion": {
+      "type": "customField",
+      "options": {
+        "output": "HTML",
+        "preset": "standard"
+      },
+      "customField": "plugin::ckeditor.CKEditor"
+    }
+  }
+}

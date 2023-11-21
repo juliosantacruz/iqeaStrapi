@@ -31,6 +31,13 @@
     "slug": {
       "type": "uid",
       "targetField": "titulo"
+    },
+    "cover": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }

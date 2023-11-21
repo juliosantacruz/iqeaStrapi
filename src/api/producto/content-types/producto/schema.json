@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "procesos",
+  "collectionName": "productos",
   "info": {
-    "singularName": "proceso",
-    "pluralName": "procesos",
-    "displayName": "proceso",
+    "singularName": "producto",
+    "pluralName": "productos",
+    "displayName": "producto",
     "description": ""
   },
   "options": {
@@ -17,6 +17,10 @@
       "required": true,
       "unique": true
     },
+    "slug": {
+      "type": "uid",
+      "targetField": "titulo"
+    },
     "descripcion": {
       "type": "customField",
       "options": {
@@ -24,10 +28,6 @@
         "preset": "rich"
       },
       "customField": "plugin::ckeditor.CKEditor"
-    },
-    "slug": {
-      "type": "uid",
-      "targetField": "titulo"
     },
     "contenido": {
       "type": "customField",
@@ -37,18 +37,19 @@
       },
       "customField": "plugin::ckeditor.CKEditor"
     },
-    "tipo_proceso": {
+    "categoria_producto": {
       "type": "relation",
       "relation": "manyToOne",
-      "target": "api::tipo-proceso.tipo-proceso",
-      "inversedBy": "procesos"
+      "target": "api::categoria-producto.categoria-producto",
+      "inversedBy": "productos"
     },
     "cover": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     }
   }
 }

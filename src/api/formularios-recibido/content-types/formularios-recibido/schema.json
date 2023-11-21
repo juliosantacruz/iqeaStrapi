@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "formularios_recibidos",
+  "info": {
+    "singularName": "formularios-recibido",
+    "pluralName": "formularios-recibidos",
+    "displayName": "Formularios Recibido"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "data": {
+      "type": "json"
+    }
+  }
+}

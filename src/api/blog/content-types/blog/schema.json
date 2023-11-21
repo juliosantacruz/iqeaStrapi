@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "procesos",
+  "collectionName": "blogs",
   "info": {
-    "singularName": "proceso",
-    "pluralName": "procesos",
-    "displayName": "proceso",
+    "singularName": "blog",
+    "pluralName": "blogs",
+    "displayName": "blog",
     "description": ""
   },
   "options": {
@@ -12,10 +12,14 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "titulo": {
+    "Title": {
       "type": "string",
-      "required": true,
       "unique": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "Title",
+      "required": true
     },
     "descripcion": {
       "type": "customField",
@@ -25,11 +29,7 @@
       },
       "customField": "plugin::ckeditor.CKEditor"
     },
-    "slug": {
-      "type": "uid",
-      "targetField": "titulo"
-    },
-    "contenido": {
+    "content": {
       "type": "customField",
       "options": {
         "output": "HTML",
@@ -37,18 +37,13 @@
       },
       "customField": "plugin::ckeditor.CKEditor"
     },
-    "tipo_proceso": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::tipo-proceso.tipo-proceso",
-      "inversedBy": "procesos"
-    },
     "cover": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     }
   }
 }

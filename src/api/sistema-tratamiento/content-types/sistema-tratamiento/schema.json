@@ -1,11 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "industrias",
+  "collectionName": "sistemas_tratamientos",
   "info": {
-    "singularName": "industria",
-    "pluralName": "industrias",
-    "displayName": "Industria",
-    "description": ""
+    "singularName": "sistema-tratamiento",
+    "pluralName": "sistemas-tratamientos",
+    "displayName": "Sistema_Tratamiento"
   },
   "options": {
     "draftAndPublish": true
@@ -13,13 +12,19 @@
   "pluginOptions": {},
   "attributes": {
     "titulo": {
-      "type": "string",
-      "required": true,
-      "unique": true
+      "type": "string"
     },
     "slug": {
       "type": "uid",
       "targetField": "titulo"
+    },
+    "descripcion": {
+      "type": "customField",
+      "options": {
+        "output": "HTML",
+        "preset": "rich"
+      },
+      "customField": "plugin::ckeditor.CKEditor"
     },
     "contenido": {
       "type": "customField",

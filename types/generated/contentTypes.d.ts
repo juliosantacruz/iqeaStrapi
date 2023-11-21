@@ -854,6 +854,15 @@ export interface ApiIndustriaIndustria extends Schema.CollectionType {
           preset: 'rich';
         }
       >;
+    descripcion: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor.CKEditor',
+        {
+          output: 'HTML';
+          preset: 'rich';
+        }
+      >;
+    cover: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

@@ -1177,6 +1177,12 @@ export interface ApiProyectoProyecto extends Schema.CollectionType {
           localized: true;
         };
       }>;
+    tipo_sistema: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

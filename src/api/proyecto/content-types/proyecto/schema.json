@@ -140,6 +140,14 @@
       },
       "type": "uid",
       "targetField": "titulo"
+    },
+    "tipo_sistema": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
     }
   }
 }

@@ -2,7 +2,7 @@ module.exports={
   routes:[
     {
       method:'GET',
-      path:'/proyectos/:slug',
+      path:'/proyecto/:slug',
       handler: 'proyecto.findOne',
       config:{
         auth:false,

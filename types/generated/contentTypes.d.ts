@@ -1183,6 +1183,11 @@ export interface ApiProyectoProyecto extends Schema.CollectionType {
           localized: true;
         };
       }>;
+    tags: Attribute.Relation<
+      'api::proyecto.proyecto',
+      'manyToMany',
+      'api::tag.tag'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1301,6 +1306,33 @@ export interface ApiSistemaTratamientoSistemaTratamiento
   };
 }
 
+export interface ApiTagTag extends Schema.CollectionType {
+  collectionName: 'tags';
+  info: {
+    singularName: 'tag';
+    pluralName: 'tags';
+    displayName: 'tag';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    tag: Attribute.String;
+    proyectos: Attribute.Relation<
+      'api::tag.tag',
+      'manyToMany',
+      'api::proyecto.proyecto'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::tag.tag', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::tag.tag', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 export interface ApiTipoProcesoTipoProceso extends Schema.CollectionType {
   collectionName: 'tipo_procesos';
   info: {
@@ -1414,6 +1446,7 @@ declare module '@strapi/types' {
       'api::proyecto.proyecto': ApiProyectoProyecto;
       'api::servicio.servicio': ApiServicioServicio;
       'api::sistema-tratamiento.sistema-tratamiento': ApiSistemaTratamientoSistemaTratamiento;
+      'api::tag.tag': ApiTagTag;
       'api::tipo-proceso.tipo-proceso': ApiTipoProcesoTipoProceso;
     }
   }

@@ -10,7 +10,7 @@ export default factories.createCoreController('api::proyecto.proyecto',  ({strap
 
     const entity = await strapi.db.query('api::proyecto.proyecto').findOne({
       where:{slug:id},
-      populate:['cover', 'galeria']
+      populate:['cover', 'galeria', 'tags']
     });
     const sanatizedEntity = await this.sanitizeOutput(entity, ctx)
     return this.transformResponse(sanatizedEntity)

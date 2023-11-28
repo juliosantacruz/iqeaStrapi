@@ -9,7 +9,7 @@
     "./**/*.ts",
     "./**/*.js",
     "src/**/*.json"
-  ],
+, "src/api/.formularios-contacto"  ],
   "exclude": [
     "node_modules/",
     "build/",

@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "formulario_contactos",
+  "info": {
+    "singularName": "formulario-contacto",
+    "pluralName": "formulario-contactos",
+    "displayName": "formulario_contacto"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nombre": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    },
+    "asunto": {
+      "type": "string"
+    },
+    "mensaje": {
+      "type": "text"
+    }
+  }
+}

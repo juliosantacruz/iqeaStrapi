@@ -764,35 +764,33 @@ export interface ApiCategoriaProductoCategoriaProducto
   };
 }
 
-export interface ApiFormulariosContactoFormulariosContacto
+export interface ApiFormularioContactoFormularioContacto
   extends Schema.CollectionType {
-  collectionName: 'formularios_contactos';
+  collectionName: 'formulario_contactos';
   info: {
-    singularName: 'formularios-contacto';
-    pluralName: 'formularios-contactos';
-    displayName: 'formulariosContacto';
+    singularName: 'formulario-contacto';
+    pluralName: 'formulario-contactos';
+    displayName: 'formulario_contacto';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    titulo: Attribute.String;
-    slug: Attribute.UID<
-      'api::formularios-contacto.formularios-contacto',
-      'titulo'
-    >;
-    formularioJson: Attribute.JSON;
+    nombre: Attribute.String;
+    email: Attribute.Email;
+    asunto: Attribute.String;
+    mensaje: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::formularios-contacto.formularios-contacto',
+      'api::formulario-contacto.formulario-contacto',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::formularios-contacto.formularios-contacto',
+      'api::formulario-contacto.formulario-contacto',
       'oneToOne',
       'admin::user'
     > &
@@ -1436,7 +1434,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::blog.blog': ApiBlogBlog;
       'api::categoria-producto.categoria-producto': ApiCategoriaProductoCategoriaProducto;
-      'api::formularios-contacto.formularios-contacto': ApiFormulariosContactoFormulariosContacto;
+      'api::formulario-contacto.formulario-contacto': ApiFormularioContactoFormularioContacto;
       'api::formularios-recibido.formularios-recibido': ApiFormulariosRecibidoFormulariosRecibido;
       'api::industria.industria': ApiIndustriaIndustria;
       'api::navigation.navigation': ApiNavigationNavigation;

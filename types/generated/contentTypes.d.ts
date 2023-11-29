@@ -746,6 +746,7 @@ export interface ApiCategoriaProductoCategoriaProducto
           preset: 'standard';
         }
       >;
+    cover: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1260,6 +1261,7 @@ export interface ApiSistemaTratamientoSistemaTratamiento
     singularName: 'sistema-tratamiento';
     pluralName: 'sistemas-tratamientos';
     displayName: 'Sistema_Tratamiento';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -1286,6 +1288,7 @@ export interface ApiSistemaTratamientoSistemaTratamiento
           preset: 'rich';
         }
       >;
+    cover: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

@@ -4,7 +4,8 @@
   "info": {
     "singularName": "sistema-tratamiento",
     "pluralName": "sistemas-tratamientos",
-    "displayName": "Sistema_Tratamiento"
+    "displayName": "Sistema_Tratamiento",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -33,6 +34,13 @@
         "preset": "rich"
       },
       "customField": "plugin::ckeditor.CKEditor"
+    },
+    "cover": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }

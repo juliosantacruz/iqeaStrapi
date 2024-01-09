@@ -42,13 +42,13 @@
       },
       "type": "enumeration",
       "enum": [
-        "comercial",
-        "industrial",
-        "alimentos",
-        "farmaceutico",
-        "construccion",
-        "residencial",
-        "gobierno"
+        "Comercial",
+        "Habitacional",
+        "Industrial",
+        "Industria de Alimentos",
+        "Industria Farmacéutica",
+        "Construcción",
+        "Gobierno"
       ],
       "required": true
     },
@@ -141,19 +141,20 @@
       "type": "uid",
       "targetField": "titulo"
     },
-    "tipo_sistema": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "string"
-    },
     "tags": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::tag.tag",
       "mappedBy": "proyectos"
+    },
+    "isPublic": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "boolean",
+      "default": true
     }
   }
 }

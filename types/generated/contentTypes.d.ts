@@ -1098,13 +1098,13 @@ export interface ApiProyectoProyecto extends Schema.CollectionType {
       }>;
     sector_comercial: Attribute.Enumeration<
       [
-        'comercial',
-        'industrial',
-        'alimentos',
-        'farmaceutico',
-        'construccion',
-        'residencial',
-        'gobierno'
+        'Comercial',
+        'Habitacional',
+        'Industrial',
+        'Industria de Alimentos',
+        'Industria Farmac\u00E9utica',
+        'Construcci\u00F3n',
+        'Gobierno'
       ]
     > &
       Attribute.Required &
@@ -1176,17 +1176,18 @@ export interface ApiProyectoProyecto extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    tipo_sistema: Attribute.String &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     tags: Attribute.Relation<
       'api::proyecto.proyecto',
       'manyToMany',
       'api::tag.tag'
     >;
+    isPublic: Attribute.Boolean &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

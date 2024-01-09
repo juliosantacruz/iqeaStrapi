@@ -9,11 +9,11 @@
     "build": "strapi build",
     "strapi": "strapi"
   },
-  "devDependencies": {},
   "dependencies": {
     "@ckeditor/strapi-plugin-ckeditor": "^0.0.10",
     "@strapi/plugin-i18n": "4.15.0",
     "@strapi/plugin-users-permissions": "4.15.0",
+    "@strapi/provider-email-sendgrid": "^4.16.2",
     "@strapi/provider-upload-cloudinary": "^4.15.0",
     "@strapi/strapi": "4.15.0",
     "pg": "8.8.0"

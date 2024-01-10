@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "visitas_portafolios",
+  "info": {
+    "singularName": "visitas-portafolio",
+    "pluralName": "visitas-portafolios",
+    "displayName": "Visitas_Portafolio",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Name": {
+      "type": "string",
+      "required": true
+    },
+    "Company": {
+      "type": "string",
+      "required": true
+    },
+    "IsAuth": {
+      "type": "boolean",
+      "default": true
+    },
+    "Password": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "Company",
+      "required": true
+    }
+  }
+}

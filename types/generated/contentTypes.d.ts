@@ -1420,6 +1420,46 @@ export interface ApiTipoProcesoTipoProceso extends Schema.CollectionType {
   };
 }
 
+export interface ApiVisitasPortafolioVisitasPortafolio
+  extends Schema.CollectionType {
+  collectionName: 'visitas_portafolios';
+  info: {
+    singularName: 'visitas-portafolio';
+    pluralName: 'visitas-portafolios';
+    displayName: 'Visitas_Portafolio';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Name: Attribute.String & Attribute.Required;
+    Company: Attribute.String & Attribute.Required;
+    IsAuth: Attribute.Boolean & Attribute.DefaultTo<true>;
+    Password: Attribute.String & Attribute.Required;
+    slug: Attribute.UID<
+      'api::visitas-portafolio.visitas-portafolio',
+      'Company'
+    > &
+      Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::visitas-portafolio.visitas-portafolio',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::visitas-portafolio.visitas-portafolio',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -1450,6 +1490,7 @@ declare module '@strapi/types' {
       'api::sistema-tratamiento.sistema-tratamiento': ApiSistemaTratamientoSistemaTratamiento;
       'api::tag.tag': ApiTagTag;
       'api::tipo-proceso.tipo-proceso': ApiTipoProcesoTipoProceso;
+      'api::visitas-portafolio.visitas-portafolio': ApiVisitasPortafolioVisitasPortafolio;
     }
   }
 }

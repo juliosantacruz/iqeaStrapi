@@ -12,7 +12,7 @@ export default factories.createCoreController(
       const entity = await strapi.db
         .query("api::visitas-portafolio.visitas-portafolio")
         .findOne({
-          where: { slug: id },
+          where: { Password: id },
         });
       const sanatizedEntity = await this.sanitizeOutput(entity, ctx);
       return this.transformResponse(sanatizedEntity);
